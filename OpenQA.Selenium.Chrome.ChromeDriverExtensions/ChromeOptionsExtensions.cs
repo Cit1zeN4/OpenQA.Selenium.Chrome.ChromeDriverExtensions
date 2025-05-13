@@ -44,22 +44,25 @@ chrome.webRequest.onAuthRequired.addListener(
 
 		private const string manifest_json = @"
 {
-    ""version"": ""1.0.0"",
-    ""manifest_version"": 2,
-    ""name"": ""Chrome Proxy"",
-    ""permissions"": [
-        ""proxy"",
-        ""tabs"",
-        ""unlimitedStorage"",
-        ""storage"",
-        ""<all_urls>"",
-        ""webRequest"",
-        ""webRequestBlocking""
-    ],
-    ""background"": {
-        ""scripts"": [""background.js""]
+	""version"": ""1.0.0"",
+	""manifest_version"": 3,
+	""name"": ""Chrome Proxy"",
+	""permissions"": [
+		""proxy"",
+		""tabs"",
+		""unlimitedStorage"",
+		""storage"",
+		""webRequest"",
+		""webRequestAuthProvider""
+	],
+	""background"": {
+		""service_worker"": ""background.js""
 	},
-    ""minimum_chrome_version"":""22.0.0""
+	""host_permissions"": [
+		""http://*/*"",
+		""https://*/*""
+	],
+	""minimum_chrome_version"": ""88.0.0""
 }";
 
 		/// <summary>
